@@ -69,10 +69,15 @@ public class ActionExecutor {
         if (isOffline(staff, target) || guard(staff, target)) return;
         logHistory(staff, "KICK", target, reason);
         DataStore.saveAsync();
-        me.drex.staffmod.util.DiscordWebhook.sendEmbed(
-            "Sanción Aplicada: KICK",
-            "**Staff:** " + staff.getName().getString() + "\n**Jugador:** " + target.getName().getString() + "\n**Razón:** " + reason,
-            0xFFA500);
+        
+        // Enviar el webhook en un hilo separado para no bloquear el servidor ni interrumpir el KICK
+        StaffModAsync.runAsync(() -> {
+            me.drex.staffmod.util.DiscordWebhook.sendEmbed(
+                "Sanción Aplicada: KICK",
+                "**Staff:** " + staff.getName().getString() + "\n**Jugador:** " + target.getName().getString() + "\n**Razón:** " + reason,
+                0xFFA500);
+        });
+    
         target.connection.disconnect(Component.literal("§cHas sido expulsado.\n§fRazón: §e" + reason));
         broadcastToStaff(staff, "§c[sᴛᴀꜰꜰ] §f" + staff.getName().getString()
             + " §ckickeó §fa §f" + target.getName().getString() + "§7. Razón: " + reason);
