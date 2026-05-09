@@ -72,7 +72,7 @@ public class KickReasonGui extends SimpleGui {
             .addLoreLine(Component.literal("§7Razón: §e" + selectedReason))
             .setCallback((idx, type, a, gui) -> {
                 ActionExecutor.kick(staff, target, selectedReason);
-                parent.open();
+                gui.close(); // Cerrar el inventario en lugar de intentar abrir el perfil de alguien offline
             })
             .build());
     }
