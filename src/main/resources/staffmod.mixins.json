@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "package": "me.drex.staffmod.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "ChatMixin",
+    "CommandMixin",
+    "CreativeSecurityMixin",
+    "MovementMixin",
+    "TeleportVanishMixin",
+    "VanishMobTargetMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

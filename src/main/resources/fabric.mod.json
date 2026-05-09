@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "staffmod",
+  "version": "${version}",
+  "name": "StaffMod",
+  "description": "Sistema premium de staff management para servidores Cobblemon 1.7.3",
+  "authors": ["StaffMod Team"],
+  "license": "MIT",
+  "environment": "server",
+  "entrypoints": {
+    "main": ["me.drex.staffmod.StaffMod"]
+  },
+  "mixins": ["staffmod.mixins.json"],
+  "depends": {
+    "fabricloader": ">=0.15.0",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
